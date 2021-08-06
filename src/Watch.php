@@ -41,7 +41,7 @@ final class Watch implements EventEmitterInterface
     public function __construct(LoopInterface $loop, array $folders)
     {
         $this->loop    = $loop;
-        $this->command = sprintf('fswatch --recursive %s', implode(' ', $folders));
+        $this->command = sprintf('fswatch -o --recursive --event=Created --event=Updated --event=Removed --event=Renamed --event=MovedTo %s', implode(' ', $folders));
     }
 
     /**
